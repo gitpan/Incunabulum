@@ -1,0 +1,34 @@
+$Id: RATIONALE 14 2007-07-07 03:35:33Z apeiron $
+
+Yet another MVC framework? Doesn't the CPAN already have enough of these? Well,
+yes, in fact. CPAN does have enough Web-based, Web-oriented, Web-centric MVC
+frameworks. You are absolutely right, and this is what Incunabulum addresses.
+
+"Wait, what?"
+
+Incunabulum isn't a Web-based MVC framework. Instead, it's a general-purpose MVC
+workflow. What this means is that instead of having a hard dependency on some
+sort of Web software, Incunabulum works independently of any Web software you
+may or may not have installed. In turn, this frees you to use Incunabulum to
+publish via any medium you want, so long as you can write (or find) the software
+required to make the system do what you want.
+
+As an example of this, Incunabulum can be used as a mailing list manager. Set up
+to receive emails directed to a certain place at a certain domain (the
+controller), parsed for control messages or otherwise decided as intended for
+the list (the model), and then sent out to the subscribed users (the view). The
+majority of the hard code (at the lowest level, anyway) -- the email retrieving
+and sending code -- is available in modules. All you have to do is tell
+Incunabulum that 'subscribe' means subscribe, and so forth.
+
+Of course, that's all well and good on its own. But the really fun stuff, the
+magic, happens when you start to combine more than one class of part of the
+infrastructure -- e.g. two Models, or two Controllers. This allows for neat
+things like a Jabber bot that sends a message to interested parties on your
+corporate intranet when a document on your Intranet Web server has been updated.
+Another cool use would be desktop publishing: presenting a fully typical
+graphical interface and transforming the input into something like PDF or
+perhaps an XML-based equivalent.
+
+In a very real way, Incunabulum applies the Perl philosophy to the MVC workflow.
+Have fun, and don't forget to share the magic.

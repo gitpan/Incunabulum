@@ -1,0 +1,24 @@
+Build.PL
+Changes
+lib/Incunabulum.pm
+lib/Incunabulum/Config.pm
+lib/Incunabulum/Config/Plugin/Hardcode.pm
+lib/Incunabulum/Controller.pm
+lib/Incunabulum/Controller/Plugin/mod_perl2.pm
+lib/Incunabulum/Docs/Devel.pod
+lib/Incunabulum/Model.pm
+lib/Incunabulum/Model/Plugin/Pg.pm
+lib/Incunabulum/Model/Plugin/SQLite.pm
+lib/Incunabulum/Model/Plugin/Test.pm
+lib/Incunabulum/View.pm
+lib/Incunabulum/View/Plugin/Dumper.pm
+lib/Incunabulum/View/Plugin/Test.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+RATIONALE
+README
+releng.pod
+t/00.load.t
+t/pod-coverage.t
+t/pod.t

@@ -1,0 +1,158 @@
+=head1 NAME
+
+Incunabulum::Docs::Devel - Incunabulum Developers' Reference (API)
+
+=head1 OVERVIEW
+
+This manual documents the Incunabulum API as visible to the Perl programmer.
+System administrators should read B<Incunabulum::Docs::Admin> instead.
+
+The Incunabulum API is implemented as a series of core modules which request
+modules in the C<::Plugins> namespace to register as plugins. At startup
+(specifically, at the C<PerlPostConfigHandler> stage), each core Incunabulum
+module requests that all packages in its namespace register themselves as
+plugins. Each module's list of plugins is stored in a package-global array.
+These package-global arrays are then stored in the Incunabulum base module.  To
+realise functionality, each Incunabulum core module retrieves the relevant array
+of plugins. For each function, a C<UNIVERSAL::can()> check is made against each
+plugin to see if it supports the requested function. Those plugins which don't
+care about a certain event happening can safely ignore it.  This frees plugin
+authors from having to write empty functions just to appease an API.
+
+At a higher level, all of this functionality is implemented using the
+B<Module::Pluggable::Ordered> module. Read below for the specifics.
+
+=head1 PLUGINS
+
+=head2 PLUGIN FRAMEWORK
+
+Incunabulum plugins are implemented using Simon Cozen's excellent
+B<Module::Pluggable::Ordered>, which means that plugin developers can specify
+some relative order for their plugins to execute.  The plugin developer has the
+choice of implementing each function, and also has the choice of what to do
+with the arguments passed to each function that they do implement. A plugin can
+simply print an appropriate content type, an empty document, and flush C<@_>
+out to F</dev/null>, if its author so pleased.
+
+The top-level Incunabulum Controller module registers a C<PerlResponseHandler>
+which parses all requests' URLs and calls the relevant module's plugins. Each
+function is called with one or more arguments, as described below. As mentioned
+earlier, the only thing that a plugin needs to do is to output the appropriate
+content type and the minimum required data for a document of that type. Because
+of the usage of B<Module::Pluggable::Ordered>, plugin authors can create a
+series of plugins which perform related, sequential tasks.  Many more
+imaginative constructs are possible. Discerning how many is left as an exercise
+for the reader.
+
+=head2 PLUGIN INTERACTION
+
+Now, to make Incunabulum I<useful>, plugins need to I<do> things. True to its
+minimalist, extensibile, and configurable nature, any module which adheres to
+the Incunabulum API and which outputs something parsable by the targeted web
+user agents is valid. Incunabulum follows the I<MVC> paradigm
+(L<http://www.wikipedia.org/wiki/Model-view-controller>). A brief introduction
+to this development pattern is provided below for those not familiar with it;
+those seeking a deeper understanding should certainly pursue the Wikipedia link.
+The I<MVC> structure is fairly simple to understand. The I<model> defines an
+interface-independent view of the data of the system. The I<view> defines user
+interface, and the I<controller> is responsible for directly responding to user
+events, such as a page request.  
+
+=head3 THE MODEL
+
+The I<model> concept applies simply enough to Incunabulum: it dictates the logic
+of how the system works. The I<model> is where such things as authentication,
+user management, and site policy have their backends. The I<controller> queries
+the I<model> for what to do with request that it's given.  The I<model> returns
+an answer to the I<controller>. All I<model> code belongs in the
+B<Incunabulum::Model> namespace. That's all that a I<model> implementer needs to
+know. 
+
+=head3 THE VIEW
+
+The I<view> of an I<MVC> system implements the user interface -- what users see.
+In the case of a weblog, this is most commonly a browser-parsable document,
+typically adhering to some form of I<(X)HTML> standard or another. The I<model>
+instructs the I<view> to render its data in an appropriate fashion before
+returning to the I<controller>.
+
+=head3 THE CONTROLLER
+
+All interaction between Incunabulum and user starts with the I<controller>.
+C<Incunabulum::Controller> is the location of Incunabulum's main C<handler> sub,
+the heart of every request. This code looks at the URL, some configuration and
+state information, and decides what to do with it. Typically it hands control
+off to the I<model>, which then proceeds to feed data to the I<view> for
+rendering.
+
+=head1 INTERFACE
+
+Incunabulum provides an object-oriented interface. Following are some short
+snippets which demonstrate the object-oriented interfaces.  Note the elision of
+C<strict>, C<warnings>, and taint-checking in these examples: this is purely for
+the purpose of simplicity.
+
+	#!/usr/bin/perl
+	use Incunabulum;
+	
+	my $weblog = Incunabulum->new
+	(
+		data_source	=> 'rdbms',
+		dsn		=> ['dbi:pg:dbname=inc', 'user', 'pass'],
+		credentials	=>
+		{
+			inc_user => 'my_user',
+			inc_pass => 'my_pass'
+		}
+	);
+
+	print $weblog->post->by_title('A Perl Diddy')->view->as_string()
+		or die $weblog->errstr();
+
+	# or ...
+
+	my $post = $weblog->post->by_title('A Perl Diddy');
+	die $weblog->errstr() unless defined $post;
+	print $post->view->as_string() or die $weblog->errstr();
+
+	# or, for a group of posts matching a title pattern ...
+
+	my @posts = $weblog->post->by_title('Perl Diddy');	# by_title()
+		or die $weblog->errstr() . "\n";		# is context-
+	for my $post(@posts)					# aware
+	{
+		print "Post title: " . $post->title() . "\n" or die
+			$weblog->errstr();
+		print $post->view->as_string() or die $weblog->errstr();
+	}
+
+=head2 Public API
+
+The API of Incunabulum is defined as the API documented in Incunabulum's
+documentation. What this means is that if it's not documented, it doesn't exist.
+Perl's default access control mechanisms (if you can call them that) for code
+inside a package are pretty lenient and don't lend themselves well to the
+encapsulation required for a more traditional OO approach. This is a great
+thing, of course, and it lets you do what you need to do to accomplish what you
+want.
+
+But this also means you can stick your fingers, nose, and other parts of
+yourself in places where they don't belong, places with rapidly moving and
+dangerous parts. I'm not going to stop you from sticking your fingers and other
+parts in these areas; there's not much I I<can> do without adding hard
+dependencies on other modules or adding ugly checks to the code. Don't depend on
+non-documented APIs to continue working the way you expect, or even to exist in
+any fashion in the future. There's not much I can do to help fix your code after
+an internal API change, unless you want to hire me as a contractor. ;)
+
+On the gripping hand, my design can turn out to be complete and utter manure. If
+you feel this is the case, please do send me email so that we can come to an
+understanding.
+
+=head1 VERSION
+
+$Id: Devel.pod 14 2007-07-07 03:35:33Z apeiron $
+
+=head1 AUTHORS
+
+Christopher Nehren, C<< <cnehren@gmail.com> >>

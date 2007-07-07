@@ -1,0 +1,62 @@
+Incunabulum
+
+Incunabulum's a plugin-centric MVC framework. Wait, what? No, I didn't forget
+the word 'Web'. While development and initial conception of Incunabulum started
+as a Web project (a blog, in fact -- how original!), the full realisation of the
+design has shown that Incunabulum can be much more than a blog if the right
+plugins are provided to it. You can do anything with Incunabulum that you can do
+with the MVC framework, because that's all that Incunabulum provides.
+
+Well, then, why would you want to use or develop for it? The same reasons you
+use and develop for Perl: it does what you want in a way you want to do it, and
+if it doesn't, you can *make* it do what you want.
+
+STATUS
+
+Right now, Incunabulum is at the developer's toy stage. What this means is that
+it doesn't do much, or it does it in a broken way, or it's broken altogether, or
+some random combination of the above determined by some source of randomness
+that may, at random, be selected at random.
+
+In very simple terms, to quote the Debian docs regarding unstable: if it breaks,
+you get to keep both pieces. :)
+
+UP AND RUNNING WITH Incunabulum
+
+Right now, not all plugins are supported (whatever that means for code this
+early in the development stages). Here's a list of those that are:
+
+Model: Pg
+Controller: mod_perl2
+View: Test
+Config: Hardcode
+
+Everything else is unsupported (again, for whatever that's worth considering
+the early state of this code).
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+
+Alternatively, to install with Module::Build, you can use the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2004-2007 Christopher Nehren <apeiron@cpan.org>
+
+This library is software. I'll determine a license eventually. For right now,
+until I make up my mind, assume it's public domain.
+
+$Id: README 14 2007-07-07 03:35:33Z apeiron $

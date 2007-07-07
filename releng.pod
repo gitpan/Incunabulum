@@ -1,0 +1,78 @@
+=head1 NAME
+
+releng -- Incunabulum Release Engineering Policy
+
+=head1 DESCRIPTION
+
+This document is (for now) a collection of loose notes and otherwise
+disorganised, disjointed thoughts concerning how releases of Incunabulum will
+work. Basically, I'm writing this document for myself, to force myself to think
+about how I want Incunabulum releases and such to work.
+
+=over 4
+
+=head2 Release Schedule
+
+Releases will be made when they're made. I don't believe in the "release early,
+release often" philosophy. I feel that it leads to a rushed development model.
+If you really want the latest code, check it out of the repository. Eventually
+(i.e. once there's actually enough of a project to warrant it) there'll be
+nightly tarballs available as well.
+
+=back
+
+=over 4
+
+=head2 Release Versioning
+
+Ah, the second biggest bikeshed issue of release engineering. I really like the
+way that the Mozilla people do releases of Mozilla. It clearly marks each
+release as alpha, beta, or stable quality. Incunabulum's >=1.0 releases will
+follow this policy. Releases <1.0 are alpha quality, unless otherwise stated.
+The declaration of a <1.0 version as beta quality does B<not> ensure that any
+subsequent releases are of the same quality. The 1.0 release will be made -- as
+all releases themselves -- when deemed appropriate.
+
+=back
+
+=over 4
+
+=head2 Branches, Trunks, and Tags -- Oh My!
+
+I also like the FreeBSD methodology of maintaining more than one active
+development track in addition to HEAD. This results in what are called -STABLE
+and security ... erm, errata branches. There's a lot of diversity here, so it
+bears some explanation.
+
+[Editor's note: I wrote the following paragraphs in the first couple of weeks of
+September, before FreeBSD 5.3 was released and before RELENG_5 was branched.]
+
+FreeBSD code tags are numerically-based, and cyclical. What this means is that a
+few core procedures repeat themselves for every major release. Each major
+release of the form ${number}.0 starts out as -CURRENT / HEAD. After a
+significant stabilisation period, -CURRENT becomes -STABLE and the major version
+of -CURRENT increases, and its minor number is reset to zero. Thus, as FreeBSD
+5.x is prepared for being the next -STABLE branch, -CURRENT is at 6.0. The
+actual CVS tags used are of the form RELENG_${number}, where ${number} is the
+major version. Note, though, that HEAD never uses this convention. Since
+releases are actually cut from the -STABLE and -CURRENT tags, there's no such
+thing as 5-STABLE or 6-CURRENT. Hence, there are machines that run 4.10-STABLE
+and 6.0-CURRENT. However, people are lazy, and thus they refer to to their
+machines as using code from those nonexistent tags.
+
+There's also the concept of errata branches, as mentioned above. What this means
+is that after a new release from one of the -CURRENT or -STABLE tags, a certain
+number of previous releases are supported by bug and security fixes. This is
+done in order to ease the upgrading process, and as general product support.
+
+I plan to support all of the above mentioned things in the Incunabulum release
+cycle. The number of errata branches that will be supported shall initially
+start at two. This may increase or decrease as time and resources permit.
+
+=back
+
+=back
+
+=head1 DOCUMENT VERSION 
+
+$Id: releng.pod 14 2007-07-07 03:35:33Z apeiron $ 
