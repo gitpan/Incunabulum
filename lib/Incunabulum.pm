@@ -1,5 +1,5 @@
 package Incunabulum;
-#$Id: Incunabulum.pm 14 2007-07-07 03:35:33Z apeiron $
+#$Id: Incunabulum.pm 24 2007-07-07 21:07:58Z apeiron $
 
 use strict;
 use warnings FATAL => 'all';
@@ -11,15 +11,15 @@ use Incunabulum::Controller;
 
 use Apache2::Const -compile => qw(OK);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub handler
 {
 	my $config = {};
-	Incunabulum::Model::get_wanted_conf_data($config);
-	Incunabulum::View::get_wanted_conf_data($config);
-	Incunabulum::Controller::get_wanted_conf_data($config);
-	Incunabulum::Config::do_config($config);
+	Incunabulum::Model::get_wanted_conf_data(\$config);
+	Incunabulum::View::get_wanted_conf_data(\$config);
+	Incunabulum::Controller::get_wanted_conf_data(\$config);
+	Incunabulum::Config::do_config(\$config);
 	return Apache2::Const::OK;
 }
 
@@ -30,7 +30,7 @@ __END__
 
 =head1 NAME
 
-Incunabulum - Extensible, plugin-based weblogging framework
+Incunabulum - Extensible, plugin-based MVC framework
 
 =head1 SYNOPSIS
 
@@ -48,13 +48,13 @@ configurations.
 
 =head1 DESCRIPTION
 
-Incunabulum is both a lot of things and nothing at the same time. It provides an
-API for developers to create weblog applications which are fully tailored to
-their needs and desires. Incunabulum grants developers this freedom by providing
-very little. On the most basic level, it's an MVC workflow. What this means is
-that there's a very well-defined path through which control and data flow.  As
-with any event-based framework, it entirely relies upon the developer to utilise
-its functionality.
+Incunabulum is both a lot of things and nothing at the same time. It provides
+an API for developers to create MVC applications which are fully tailored to
+their needs and desires. Incunabulum grants developers this freedom by
+providing very little. On the most basic level, it's an MVC workflow. What this
+means is that there's a very well-defined path through which control and data
+flow.  As with any event-based framework, it entirely relies upon the developer
+to utilise its functionality.
 
 On its own, without any plugins (including the ones that ship with Incunabulum),
 Incunabulum's functionality weighs in at zero. Hence, it's very easy to both

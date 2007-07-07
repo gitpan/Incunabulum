@@ -1,5 +1,5 @@
 package Incunabulum::View;
-#Id#
+#$Id: View.pm 24 2007-07-07 21:07:58Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 use vars qw#@EXPORT#;
@@ -9,9 +9,9 @@ use Module::Pluggable::Ordered;
 use Exporter 'import';
 @EXPORT = qw#present_view get_wanted_conf_data#;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
-sub present_view($$)
+sub present_view
 {
 	my $pkg = shift;
 	my $r = shift;
@@ -28,11 +28,11 @@ sub present_view($$)
 	}
 }
 
-sub get_wanted_conf_data($)
+sub get_wanted_conf_data
 {
 	my $pkg = shift;
 	my $config = shift;
-	Incunabulum::View->call_plugins('get_wanted_conf_data', $config);
+	Incunabulum::View->call_plugins('get_wanted_conf_data', \$config);
 }
 
 1;

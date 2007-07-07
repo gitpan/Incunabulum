@@ -1,5 +1,5 @@
 package Incunabulum::View::Plugin::Dumper;
-#Id#
+#$Id: Dumper.pm 24 2007-07-07 21:07:58Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -9,7 +9,7 @@ use Apache2::Const -compile => qw(OK);
 
 use Data::Dumper;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 # Since you're not likely to use this View with any other view, this sub doesn't
 # really matter, but leave it here anyway.

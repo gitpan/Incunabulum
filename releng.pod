@@ -71,8 +71,6 @@ start at two. This may increase or decrease as time and resources permit.
 
 =back
 
-=back
-
 =head1 DOCUMENT VERSION 
 
-$Id: releng.pod 14 2007-07-07 03:35:33Z apeiron $ 
+$Id: releng.pod 24 2007-07-07 21:07:58Z apeiron $ 

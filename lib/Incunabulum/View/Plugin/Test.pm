@@ -1,5 +1,5 @@
 package Incunabulum::View::Plugin::Test;
-#Id#
+#$Id: Test.pm 24 2007-07-07 21:07:58Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -7,7 +7,7 @@ use Apache2::RequestRec ();
 use Apache2::RequestIO ();
 use Apache2::Const -compile => qw(OK);
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub do_view_order {1}
 

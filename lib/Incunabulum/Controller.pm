@@ -1,5 +1,5 @@
 package Incunabulum::Controller;
-#Id#
+#$Id: Controller.pm 24 2007-07-07 21:07:58Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 use vars qw#@EXPORT#;
@@ -9,13 +9,13 @@ use Module::Pluggable::Ordered;
 use Exporter 'import';
 @EXPORT = qw#get_wanted_conf_data#;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub get_wanted_conf_data($)
 {
 	my $pkg = shift;
 	my $config = shift;
-	Incunabulum::Controller->call_plugins('get_wanted_conf_data', $config);
+	Incunabulum::Controller->call_plugins('get_wanted_conf_data', \$config);
 }
 
 1;

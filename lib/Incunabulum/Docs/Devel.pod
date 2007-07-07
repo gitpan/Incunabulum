@@ -151,8 +151,8 @@ understanding.
 
 =head1 VERSION
 
-$Id: Devel.pod 14 2007-07-07 03:35:33Z apeiron $
+$Id: Devel.pod 18 2007-07-07 05:13:38Z apeiron $
 
 =head1 AUTHORS
 
-Christopher Nehren, C<< <cnehren@gmail.com> >>
+Christopher Nehren, C<< <apeiron@cpan.org> >>

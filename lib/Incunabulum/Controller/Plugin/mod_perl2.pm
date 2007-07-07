@@ -1,5 +1,5 @@
 package Incunabulum::Controller::Plugin::mod_perl2;
-#$Id: mod_perl2.pm 14 2007-07-07 03:35:33Z apeiron $
+#$Id: mod_perl2.pm 24 2007-07-07 21:07:58Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -12,7 +12,7 @@ use Module::Pluggable::Ordered;
 use Incunabulum::Model;
 use Incunabulum::View;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub handler
 {
