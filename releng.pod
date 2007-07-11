@@ -9,8 +9,6 @@ disorganised, disjointed thoughts concerning how releases of Incunabulum will
 work. Basically, I'm writing this document for myself, to force myself to think
 about how I want Incunabulum releases and such to work.
 
-=over 4
-
 =head2 Release Schedule
 
 Releases will be made when they're made. I don't believe in the "release early,
@@ -18,10 +16,6 @@ release often" philosophy. I feel that it leads to a rushed development model.
 If you really want the latest code, check it out of the repository. Eventually
 (i.e. once there's actually enough of a project to warrant it) there'll be
 nightly tarballs available as well.
-
-=back
-
-=over 4
 
 =head2 Release Versioning
 
@@ -32,10 +26,6 @@ follow this policy. Releases <1.0 are alpha quality, unless otherwise stated.
 The declaration of a <1.0 version as beta quality does B<not> ensure that any
 subsequent releases are of the same quality. The 1.0 release will be made -- as
 all releases themselves -- when deemed appropriate.
-
-=back
-
-=over 4
 
 =head2 Branches, Trunks, and Tags -- Oh My!
 
@@ -69,8 +59,6 @@ I plan to support all of the above mentioned things in the Incunabulum release
 cycle. The number of errata branches that will be supported shall initially
 start at two. This may increase or decrease as time and resources permit.
 
-=back
-
 =head1 DOCUMENT VERSION 
 
-$Id: releng.pod 24 2007-07-07 21:07:58Z apeiron $ 
+$Id: releng.pod 27 2007-07-08 08:39:18Z apeiron $ 

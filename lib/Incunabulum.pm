@@ -1,5 +1,5 @@
 package Incunabulum;
-#$Id: Incunabulum.pm 24 2007-07-07 21:07:58Z apeiron $
+#$Id: Incunabulum.pm 27 2007-07-08 08:39:18Z apeiron $
 
 use strict;
 use warnings FATAL => 'all';
@@ -11,7 +11,7 @@ use Incunabulum::Controller;
 
 use Apache2::Const -compile => qw(OK);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub handler
 {
@@ -83,6 +83,19 @@ how to handle database connections or authentication failures. And don't expect
 anything in the Incunabulum::View namespace to know anything beyond some
 geek-chic presentation languages (and some not-so-chic, but some people still
 use RSS, so... :))
+
+=over
+
+=item handler
+
+NOTE: This documentation placed here so Test::Pod::Coverage is happy. I know
+that I should document (and test...) this code better. But that's not really
+feasible with a non-existent API definition.
+
+Currently living as a PerlPostConfigHandler for the mod_perl 2 Controller
+plugin. This will change.
+
+=back
 
 =head1 EXPORT
 

@@ -1,3 +1,6 @@
+0.03 2007/07/08
+	* Added sufficient (stub) documentation so that the tests pass. Real
+	  Documentation [tm] will be added when the API stabilises.
 0.02 2007/07/07
 	* Second public release; fixes the ugly callback strategy that was in
 	  place, using references instead. Code is overall much cleaner and
@@ -8,5 +11,5 @@
 	* First initial public release. More a developer's toy than anything
 	  else.
 
-$Id: Changes 25 2007-07-07 21:11:38Z apeiron $
+$Id: Changes 27 2007-07-08 08:39:18Z apeiron $
 # vim: syntax=changelog

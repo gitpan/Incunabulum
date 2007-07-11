@@ -1,5 +1,5 @@
 package Incunabulum::View::Plugin::Test;
-#$Id: Test.pm 24 2007-07-07 21:07:58Z apeiron $
+#$Id: Test.pm 27 2007-07-08 08:39:18Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -7,7 +7,7 @@ use Apache2::RequestRec ();
 use Apache2::RequestIO ();
 use Apache2::Const -compile => qw(OK);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub do_view_order {1}
 
@@ -30,3 +30,41 @@ sub do_view
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Incunabulum::View::Plugin::Test -- Test output plugin with hardcoded hash key
+accessing.
+
+=head1 SYNOPSIS
+
+No user-serviceable parts inside for the moment.
+
+=head1 DESCRIPTION
+
+Yet another very simple bit of code that is there to get a proof of concept up
+and running. Assuming your database s tructure is appropriate, this will display
+content in a blog-esque fashion.
+
+=over
+
+=item do_view
+
+NOTE: This documentation placed here so Test::Pod::Coverage is happy. I know
+that I should document (and test...) this code better. But that's not really
+feasible with a non-existent API definition.
+
+A test view, which is used for my personal proof of concept. Don't count on
+anything it does to work in the future.
+
+=item do_view_order
+
+The MPO order for do_view.
+
+=back
+
+=head1 SEE ALSO
+
+L<Incunabulum>.
