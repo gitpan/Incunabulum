@@ -1,5 +1,5 @@
 package Incunabulum::Controller::Plugin::mod_perl2;
-#$Id: mod_perl2.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: mod_perl2.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -16,19 +16,19 @@ our $VERSION = '0.03';
 
 sub handler
 {
-	my $r = shift;
-	my $uri = $r->uri();
-	my $data = establish_model($uri);
-	my $retcode = present_view($r, $data);
-	if(0 == $retcode)
-	{
-		return Apache2::Const::OK;
-	}
-	else
-	{
-		$r->content_type('text/plain');
-		print "Oh no!\n";
-	}
+    my $r = shift;
+    my $uri = $r->uri();
+    my $data = establish_model($uri);
+    my $retcode = present_view($r, $data);
+    if(0 == $retcode)
+    {
+        return Apache2::Const::OK;
+    }
+    else
+    {
+        $r->content_type('text/plain');
+        print "Oh no!\n";
+    }
 }
 1;
 
@@ -47,7 +47,7 @@ No user-serviceable parts inside for the moment.
 
 Your basic mod_perl 2.x handler. Doesn't do anything spectacular at the moment.
 
-=over
+=over 4
 
 =item handler
 

@@ -1,5 +1,5 @@
 package Incunabulum::Model;
-#$Id: Model.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Model.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 use vars qw#@EXPORT#;
@@ -13,18 +13,18 @@ our $VERSION = '0.03';
 
 sub establish_model
 {
-	my $pkg = shift;
-	my $uri = shift;
-	my $input = {};
-	Incunabulum::Model->call_plugins('get_data', $uri, \$input);
-	return $input;
+    my $pkg = shift;
+    my $uri = shift;
+    my $input = {};
+    Incunabulum::Model->call_plugins('get_data', $uri, \$input);
+    return $input;
 }
 
 sub get_wanted_conf_data
 {
-	my $pkg = shift;
-	my $config = shift;
-	Incunabulum::Model->call_plugins('get_wanted_conf_data', \$config);
+    my $pkg = shift;
+    my $config = shift;
+    Incunabulum::Model->call_plugins('get_wanted_conf_data', \$config);
 }
 
 1;
@@ -44,7 +44,7 @@ No user-serviceable parts inside for the moment.
 The B<Model> component of the MVC framework implements domain logic and possibly
 data storing / retrieving. Incunabulum Models do both.
 
-=over
+=over 4
 
 =item establish_model
 

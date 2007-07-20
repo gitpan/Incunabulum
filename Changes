@@ -1,6 +1,12 @@
+0.04 2007/07/19
+    * Fix Incunabulum.pm to not depend on mod_perl 2 with a bit of a hack. It'll
+      be fixed in a later version when I've had time to think about a proper way
+      of doing it.
+
 0.03 2007/07/08
 	* Added sufficient (stub) documentation so that the tests pass. Real
 	  Documentation [tm] will be added when the API stabilises.
+
 0.02 2007/07/07
 	* Second public release; fixes the ugly callback strategy that was in
 	  place, using references instead. Code is overall much cleaner and
@@ -11,5 +17,5 @@
 	* First initial public release. More a developer's toy than anything
 	  else.
 
-$Id: Changes 27 2007-07-08 08:39:18Z apeiron $
+$Id: Changes 36 2007-07-20 01:46:00Z apeiron $
 # vim: syntax=changelog

@@ -1,5 +1,5 @@
 package Incunabulum::View;
-#$Id: View.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: View.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 use vars qw#@EXPORT#;
@@ -13,26 +13,26 @@ our $VERSION = '0.03';
 
 sub present_view
 {
-	my $pkg = shift;
-	my $r = shift;
-	my $data = shift;
-	my $data_pointer = 0;
-	Incunabulum::View->call_plugins('do_view', $r, $data, \$data_pointer);
-	if(0 == $data_pointer)
-	{
-		return 0;
-	}
-	else
-	{
-		return $data_pointer;
-	}
+    my $pkg = shift;
+    my $r = shift;
+    my $data = shift;
+    my $data_pointer = 0;
+    Incunabulum::View->call_plugins('do_view', $r, $data, \$data_pointer);
+    if(0 == $data_pointer)
+    {
+        return 0;
+    }
+    else
+    {
+        return $data_pointer;
+    }
 }
 
 sub get_wanted_conf_data
 {
-	my $pkg = shift;
-	my $config = shift;
-	Incunabulum::View->call_plugins('get_wanted_conf_data', \$config);
+    my $pkg = shift;
+    my $config = shift;
+    Incunabulum::View->call_plugins('get_wanted_conf_data', \$config);
 }
 
 1;
@@ -52,7 +52,7 @@ No user-serviceable parts inside for the moment.
 The B<View> component of the MVC framework implements user interface, or some
 other kind of information or entities meant for user consumption.
 
-=over
+=over 4
 
 =item present_view
 

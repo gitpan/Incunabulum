@@ -1,5 +1,5 @@
 package Incunabulum::Model::Plugin::Pg;
-#$Id: Pg.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Pg.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -13,20 +13,20 @@ sub get_data_order {1}
 
 sub get_data
 {
-	my $pkg = shift;
-	my $uri = shift;
-	my $input = shift;
-	my $config = Incunabulum::Config->get_config_tree('incunabulum.model.plugin.pg');
-	my $dbname = $$config{'dbname'};
-	my $host = $$config{'dbhost'};
-	my $port = $$config{'dbport'};
-	my $user = $$config{'dbuser'};
-	my $pass = $$config{'dbpass'};
-	my $dbh = DBI->connect("dbi:Pg:dbname=$dbname;host=$host;port=$port",
-		$user, $pass);
-	my $rows = $dbh->selectall_arrayref('SELECT id, added_date, author,
-		subject, body from blog order by id', {Slice => {}});
-	$$input = $rows;
+    my $pkg = shift;
+    my $uri = shift;
+    my $input = shift;
+    my $config = Incunabulum::Config->get_config_tree('incunabulum.model.plugin.pg');
+    my $dbname = $$config{'dbname'};
+    my $host = $$config{'dbhost'};
+    my $port = $$config{'dbport'};
+    my $user = $$config{'dbuser'};
+    my $pass = $$config{'dbpass'};
+    my $dbh = DBI->connect("dbi:Pg:dbname=$dbname;host=$host;port=$port",
+        $user, $pass);
+    my $rows = $dbh->selectall_arrayref('SELECT id, added_date, author,
+        subject, body from blog order by id', {Slice => {}});
+    $$input = $rows;
 }
 
 1;
@@ -46,7 +46,7 @@ No user-serviceable parts inside for the moment.
 This plugin gets stuff from a PostgreSQL database using some configuration data.
 Its API docs don't exist, so its interface doesn't exist.
 
-=over
+=over 4
 
 =item get_data
 

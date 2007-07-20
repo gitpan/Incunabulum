@@ -1,5 +1,5 @@
 package Incunabulum::Config::Plugin::Hardcode;
-#$Id: Hardcode.pm 31 2007-07-11 17:44:21Z apeiron $
+#$Id: Hardcode.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -11,13 +11,13 @@ sub get_config_data_order {1};
 
 sub get_config_data
 {
-	my $pkg = shift;
-	my $config = shift; # Reference to a reference to a hash.
-	$$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbname'} = q#dbname#;
-	$$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbuser'} = q#dbuser#;
-	$$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbpass'} = q#dbpass#;
-	$$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbhost'} = q#dbhost#;
-	$$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbport'} = q#dbport#;
+    my $pkg = shift;
+    my $config = shift; # Reference to a reference to a hash.
+    $$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbname'} = q#dbname#;
+    $$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbuser'} = q#dbuser#;
+    $$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbpass'} = q#dbpass#;
+    $$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbhost'} = q#dbhost#;
+    $$$config{'incunabulum'}{'model'}{'plugin'}{'pg'}{'dbport'} = q#dbport#;
 }
 
 1;
@@ -37,7 +37,7 @@ No user-serviceable parts inside for the moment.
 
 It's an ugly hack, yes. It's going to be supplanted very soon, yes.
 
-=over
+=over 4
 
 =item get_config_data
 

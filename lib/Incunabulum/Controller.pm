@@ -1,5 +1,5 @@
 package Incunabulum::Controller;
-#$Id: Controller.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Controller.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 use vars qw#@EXPORT#;
@@ -13,9 +13,9 @@ our $VERSION = '0.03';
 
 sub get_wanted_conf_data
 {
-	my $pkg = shift;
-	my $config = shift;
-	Incunabulum::Controller->call_plugins('get_wanted_conf_data', \$config);
+    my $pkg = shift;
+    my $config = shift;
+    Incunabulum::Controller->call_plugins('get_wanted_conf_data', \$config);
 }
 
 1;
@@ -41,7 +41,7 @@ of accomplishing tasks in Incunabulum, each catered to the particular
 environment in which code will be calling Incunabulum. For example, there's one
 for accessing Incunabulum via mod_perl 2.
 
-=over
+=over 4
 
 =item get_wanted_conf_data
 

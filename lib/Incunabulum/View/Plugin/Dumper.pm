@@ -1,5 +1,5 @@
 package Incunabulum::View::Plugin::Dumper;
-#$Id: Dumper.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Dumper.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -18,8 +18,8 @@ sub do_view_order {1}
 
 sub do_view
 {
-	print Dumper(@_);
-	return 0;
+    print Dumper(@_);
+    return 0;
 }
 
 1;
@@ -41,7 +41,7 @@ Does exactly what it says. No processing of arguments or anything, just dumps
 straight to whatever's been most recently C<select()>'d. Great for debugging,
 not much else (primitive network-oriented serialisation, maybe?).
 
-=over
+=over 4
 
 =item do_view
 

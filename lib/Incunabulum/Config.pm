@@ -1,5 +1,5 @@
 package Incunabulum::Config;
-#$Id: Config.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Config.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -16,22 +16,22 @@ my $config;
 
 sub do_config
 {
-	my $pkg = shift;
-	$config = shift;
-	Incunabulum::Config->call_plugins('get_config_data', \$config);
+    my $pkg = shift;
+    $config = shift;
+    Incunabulum::Config->call_plugins('get_config_data', \$config);
 }
 
 sub get_config_tree
 {
-	my $pkg = shift;
-	my $subtree = shift;
-        my @parts = split /\./, $subtree;
-        my $tree = $config;
-        for my $part(@parts)
-        {
-                $tree = $$tree{$part};
-        }
-        return $tree;
+    my $pkg = shift;
+    my $subtree = shift;
+    my @parts = split /\./, $subtree;
+    my $tree = $config;
+    for my $part(@parts)
+    {
+        $tree = $$tree{$part};
+    }
+    return $tree;
 }
 1;
 
@@ -51,7 +51,7 @@ Yep, your basic run of the mill configuration system here. Nothing too much, but
 it gets the job done for my proof of concept. Like the rest of Incunabulum,
 this will be embellished with time.
 
-=over
+=over 4
 
 =item do_config
 

@@ -1,5 +1,5 @@
 package Incunabulum::View::Plugin::Test;
-#$Id: Test.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Test.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -13,20 +13,20 @@ sub do_view_order {1}
 
 sub do_view
 {
-	my $pkg = shift;
-	my $data = shift;
-	my @posts = @$data;
-	for my $post(@posts)
-	{
-		print "\n\n";
-		print $$post{subject};
-		print "\n\n";
-		print $$post{body};
-		print "\n\n";
-		print "Posted by $$post{author} at  $$post{added_date}";
-		print "\n\n";
-	}
-	return 0;
+    my $pkg = shift;
+    my $data = shift;
+    my @posts = @$data;
+    for my $post(@posts)
+    {
+        print "\n\n";
+        print $$post{subject};
+        print "\n\n";
+        print $$post{body};
+        print "\n\n";
+        print "Posted by $$post{author} at  $$post{added_date}";
+        print "\n\n";
+    }
+    return 0;
 }
 
 1;
@@ -48,7 +48,7 @@ Yet another very simple bit of code that is there to get a proof of concept up
 and running. Assuming your database s tructure is appropriate, this will display
 content in a blog-esque fashion.
 
-=over
+=over 4
 
 =item do_view
 

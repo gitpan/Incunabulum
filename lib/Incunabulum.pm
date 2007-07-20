@@ -1,5 +1,5 @@
 package Incunabulum;
-#$Id: Incunabulum.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Incunabulum.pm 35 2007-07-20 01:44:29Z apeiron $
 
 use strict;
 use warnings FATAL => 'all';
@@ -9,18 +9,16 @@ use Incunabulum::Model;
 use Incunabulum::View;
 use Incunabulum::Controller;
 
-use Apache2::Const -compile => qw(OK);
-
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub handler
 {
-	my $config = {};
-	Incunabulum::Model::get_wanted_conf_data(\$config);
-	Incunabulum::View::get_wanted_conf_data(\$config);
-	Incunabulum::Controller::get_wanted_conf_data(\$config);
-	Incunabulum::Config::do_config(\$config);
-	return Apache2::Const::OK;
+    my $config = {};
+    Incunabulum::Model::get_wanted_conf_data(\$config);
+    Incunabulum::View::get_wanted_conf_data(\$config);
+    Incunabulum::Controller::get_wanted_conf_data(\$config);
+    Incunabulum::Config::do_config(\$config);
+    return 0; # bit of a hack to not depend on mod_perl
 }
 
 no warnings 'void';
@@ -36,11 +34,11 @@ Incunabulum - Extensible, plugin-based MVC framework
 
 The most minimal Apache-enabled Incunabulum configuration:
 
-	PerlPostConfigHandler Incunabulum
-	<Location /incunabulum>
-		SetHandler perl-script
-		PerlResponseHandler Incunabulum::Controller::Plugin::mod_perl2
-	</Location>
+    PerlPostConfigHandler Incunabulum
+    <Location /incunabulum>
+        SetHandler perl-script
+        PerlResponseHandler Incunabulum::Controller::Plugin::mod_perl2
+    </Location>
 
 Other configurations are possible. See
 L<Incunabulum::Docs::Admin|Incunabulum::Docs::Admin> for more possible

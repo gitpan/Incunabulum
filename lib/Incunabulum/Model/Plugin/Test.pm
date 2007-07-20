@@ -1,5 +1,5 @@
 package Incunabulum::Model::Plugin::Test;
-#$Id: Test.pm 27 2007-07-08 08:39:18Z apeiron $
+#$Id: Test.pm 34 2007-07-11 22:09:25Z apeiron $
 use strict;
 use warnings FATAL => 'all';
 
@@ -9,10 +9,10 @@ sub get_data_order {1}
 
 sub get_data
 {
-	my $pkg = shift;
-	my $uri = shift;
-	my $input = shift;
-	$$input{'hello'} = "Hello, world!\n";
+    my $pkg = shift;
+    my $uri = shift;
+    my $input = shift;
+    $$input{'hello'} = "Hello, world!\n";
 }
 
 1;
@@ -32,7 +32,7 @@ No user-serviceable parts inside for the moment.
 Just a simple test returning a hardcoded string. Most probably to be used with
 L<Incunabulum::View::Plugin::Dumper>.
 
-=over
+=over 4
 
 =item get_data
 
